@@ -1,8 +1,7 @@
-import logo from "./logo.svg";
-import "./App.css";
 import { Link } from "react-router-dom";
 import { createRef } from "react";
 import axios from "axios";
+import React from "react";
 
 const PORT = 8080;
 
@@ -26,11 +25,13 @@ function App() {
     ) {
       alert("Please fill in all required details");
     }
-    // else {
-    //   axios.post(`/videos`, {tag_number ,part_number ,rack_number,location,quantity})
-    //   redirectHome();
-    // }
+    else {
+      axios.post(`/`, {tag_number ,part_number ,rack_number,location,quantity,message})
+      // redirectHome();
+    }
   };
+
+
 
   return (
     <section className="upload">
@@ -88,7 +89,9 @@ function App() {
             type="text"
             placeholder="Add a message"
           />
-          <div className="upload__form-buttons-div"></div>
+          <div className="upload__form-buttons-div">
+          <button to="/" onClick={handleSubmit} className="upload__form-button">Submit</button>
+          </div>
         </form>
       </div>
     </section>
